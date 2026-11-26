@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  library-ref.xsd — normalised model: companies and technologies are declared ONCE
+  (reference catalogues) and reports point to them by identifier.
+  xs:key / xs:keyref give referential integrity: a report cannot reference
+  a company or a technology that does not exist.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
+
+  <!-- ===== simple types ===== -->
+  <xs:simpleType name="Year">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1990"/><xs:maxInclusive value="2100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Visibility">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="public"/><xs:enumeration value="restricted"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TechCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Back-end"/><xs:enumeration value="Front-end"/>
+      <xs:enumeration value="Data"/><xs:enumeration value="DevOps"/>
+      <xs:enumeration value="AI"/><xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ===== complex types ===== -->
+  <xs:complexType name="CompanyType">
+    <xs:sequence>
+      <xs:element name="name"   type="xs:string"/>
+      <xs:element name="alias"  type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="sector" type="xs:string" minOccurs="0"/>
+      <xs:element name="city"   type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="TechnologyType">
+    <xs:sequence>
+      <xs:element name="name"  type="xs:string"/>
+      <xs:element name="alias" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id"       type="xs:ID"          use="required"/>
+    <xs:attribute name="category" type="TechCategory"   default="Other"/>
+  </xs:complexType>
+
+  <xs:complexType name="InternshipType">
+    <xs:sequence>
+      <xs:element name="city"      type="xs:string" minOccurs="0"/>
+      <xs:element name="startDate" type="xs:date"/>
+      <xs:element name="endDate"   type="xs:date"/>
+      <xs:element name="role"      type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="companyRef" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="TechRefType">
+    <xs:attribute name="ref" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ReportType">
+    <xs:sequence>
+      <xs:element name="title"    type="xs:string"/>
+      <xs:element name="abstract" type="xs:string" minOccurs="0"/>
+      <xs:element name="author"   type="xs:string"/>
+      <xs:element name="supervisors">
+        <xs:complexType><xs:sequence>
+          <xs:element name="supervisor" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence></xs:complexType>
+      </xs:element>
+      <xs:element name="program"    type="xs:string" minOccurs="0"/>
+      <xs:element name="internship" type="InternshipType"/>
+      <xs:element name="keywords" minOccurs="0">
+        <xs:complexType><xs:sequence>
+          <xs:element name="keyword" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence></xs:complexType>
+      </xs:element>
+      <xs:element name="technologies" minOccurs="0">
+        <xs:complexType><xs:sequence>
+          <xs:element name="techRef" type="TechRefType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence></xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id"         type="xs:ID"      use="required"/>
+    <xs:attribute name="year"       type="Year"       use="required"/>
+    <xs:attribute name="language"   type="xs:string"  default="fr"/>
+    <xs:attribute name="visibility" type="Visibility" default="public"/>
+  </xs:complexType>
+
+  <!-- ===== root ===== -->
+  <xs:element name="library">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="companyCatalog">
+          <xs:complexType><xs:sequence>
+            <xs:element name="company" type="CompanyType" maxOccurs="unbounded"/>
+          </xs:sequence></xs:complexType>
+        </xs:element>
+        <xs:element name="technologyCatalog">
+          <xs:complexType><xs:sequence>
+            <xs:element name="technology" type="TechnologyType" maxOccurs="unbounded"/>
+          </xs:sequence></xs:complexType>
+        </xs:element>
+        <xs:element name="reports">
+          <xs:complexType><xs:sequence>
+            <xs:element name="report" type="ReportType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence></xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+    <!-- Referential integrity -->
+    <xs:key name="companyKey">
+      <xs:selector xpath="companyCatalog/company"/><xs:field xpath="@id"/>
+    </xs:key>
+    <xs:key name="technologyKey">
+      <xs:selector xpath="technologyCatalog/technology"/><xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="internshipCompanyRef" refer="companyKey">
+      <xs:selector xpath="reports/report/internship"/><xs:field xpath="@companyRef"/>
+    </xs:keyref>
+    <xs:keyref name="reportTechnologyRef" refer="technologyKey">
+      <xs:selector xpath="reports/report/technologies/techRef"/><xs:field xpath="@ref"/>
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

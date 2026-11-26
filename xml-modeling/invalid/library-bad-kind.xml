@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample data. Companies, people and reports below are FICTIONAL. -->
+<library>
+  <document id="rep-2024-001" kind="report" year="2024" language="fr" visibility="public">
+    <title>Mise en place d'une plateforme de détection de fraude en temps réel</title>
+    <abstract>Conception d'un pipeline de streaming pour détecter les transactions suspectes.</abstract>
+    <author>Salma El Idrissi</author>
+    <supervisor>Pr. Karim Benali</supervisor>
+    <program>Master Data Science</program>
+    <company>Atlas Data Solutions</company>
+    <city>Casablanca</city>
+    <keywords><keyword>fraude</keyword><keyword>streaming</keyword><keyword>détection d'anomalies</keyword></keywords>
+    <technologies><technology>Kafka</technology><technology>Spark</technology><technology>Python</technology></technologies>
+  </document>
+
+  <document id="rep-2023-014" kind="report" year="2023" language="fr" visibility="restricted">
+    <title>Migration d'une application monolithique vers une architecture modulaire</title>
+    <abstract>Découpage d'un monolithe de gestion logistique en modules indépendants.</abstract>
+    <author>Youssef Amrani</author>
+    <supervisor>Pr. Nadia Tazi</supervisor>
+    <program>Master Génie Logiciel</program>
+    <company>Maghreb Logistics SA</company>
+    <city>Tanger</city>
+    <keywords><keyword>architecture</keyword><keyword>migration</keyword></keywords>
+    <technologies><technology>Node.js</technology><technology>MongoDB</technology><technology>Docker</technology></technologies>
+  </document>
+
+  <document id="guide-architecture" kind="novel" year="2026" language="en">
+    <title>Choosing and justifying a software architecture</title>
+    <abstract>Main architectural styles and how to defend a choice in a report.</abstract>
+    <keywords><keyword>architecture</keyword><keyword>layered</keyword></keywords>
+  </document>
+</library>

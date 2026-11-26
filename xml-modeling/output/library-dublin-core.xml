@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<records xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <oai_dc:dc>
+    <dc:title>Mise en place d'une plateforme de détection de fraude en temps réel</dc:title>
+    <dc:creator>Salma El Idrissi</dc:creator>
+    <dc:contributor>Pr. Karim Benali</dc:contributor>
+    <dc:date>2024</dc:date>
+    <dc:description>Conception d'un pipeline de streaming pour détecter les transactions suspectes.</dc:description>
+    <dc:subject>fraude</dc:subject>
+    <dc:subject>streaming</dc:subject>
+    <dc:subject>détection d'anomalies</dc:subject>
+    <dc:language>fr</dc:language>
+    <dc:publisher>Atlas Data Solutions</dc:publisher>
+    <dc:type>Text.Thesis</dc:type>
+    <dc:identifier>rep-2024-001</dc:identifier>
+  </oai_dc:dc>
+  <oai_dc:dc>
+    <dc:title>Migration d'une application monolithique vers une architecture modulaire</dc:title>
+    <dc:creator>Youssef Amrani</dc:creator>
+    <dc:contributor>Pr. Nadia Tazi</dc:contributor>
+    <dc:date>2023</dc:date>
+    <dc:description>Découpage d'un monolithe de gestion logistique en modules indépendants.</dc:description>
+    <dc:subject>architecture</dc:subject>
+    <dc:subject>migration</dc:subject>
+    <dc:language>fr</dc:language>
+    <dc:publisher>Maghreb Logistics SA</dc:publisher>
+    <dc:type>Text.Thesis</dc:type>
+    <dc:identifier>rep-2023-014</dc:identifier>
+  </oai_dc:dc>
+  <oai_dc:dc>
+    <dc:title>Choosing and justifying a software architecture</dc:title>
+    <dc:date>2026</dc:date>
+    <dc:description>Main architectural styles and how to defend a choice in a report.</dc:description>
+    <dc:subject>architecture</dc:subject>
+    <dc:subject>layered</dc:subject>
+    <dc:language>en</dc:language>
+    <dc:type>Text.Guide</dc:type>
+    <dc:identifier>guide-architecture</dc:identifier>
+  </oai_dc:dc>
+</records>

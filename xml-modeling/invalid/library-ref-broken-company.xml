@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample data. Companies, people and reports below are FICTIONAL. -->
+<library>
+  <companyCatalog>
+    <company id="cmp_atlas">
+      <name>Atlas Data Solutions</name><alias>Atlas Data</alias>
+      <sector>Services numériques</sector><city>Casablanca</city>
+    </company>
+    <company id="cmp_maghreb">
+      <name>Maghreb Logistics SA</name><alias>MLog</alias>
+      <sector>Logistique</sector><city>Tanger</city>
+    </company>
+  </companyCatalog>
+
+  <technologyCatalog>
+    <technology id="tech_kafka"   category="Data"><name>Kafka</name></technology>
+    <technology id="tech_spark"   category="Data"><name>Spark</name></technology>
+    <technology id="tech_python"  category="Back-end"><name>Python</name></technology>
+    <technology id="tech_nodejs"  category="Back-end"><name>Node.js</name><alias>NodeJS</alias><alias>node js</alias></technology>
+    <technology id="tech_mongodb" category="Data"><name>MongoDB</name><alias>Mongo</alias></technology>
+    <technology id="tech_docker"  category="DevOps"><name>Docker</name></technology>
+  </technologyCatalog>
+
+  <reports>
+    <report id="rep_2024_001" year="2024" language="fr" visibility="public">
+      <title>Mise en place d'une plateforme de détection de fraude en temps réel</title>
+      <abstract>Conception d'un pipeline de streaming pour détecter les transactions suspectes.</abstract>
+      <author>Salma El Idrissi</author>
+      <supervisors><supervisor>Pr. Karim Benali</supervisor></supervisors>
+      <program>Master Data Science</program>
+      <internship companyRef="cmp_atlas">
+        <city>Casablanca</city>
+        <startDate>2024-02-01</startDate><endDate>2024-07-31</endDate>
+        <role>Stagiaire data engineer</role>
+      </internship>
+      <keywords><keyword>fraude</keyword><keyword>streaming</keyword></keywords>
+      <technologies><techRef ref="tech_kafka"/><techRef ref="tech_spark"/><techRef ref="tech_python"/></technologies>
+    </report>
+
+    <report id="rep_2023_014" year="2023" language="fr" visibility="restricted">
+      <title>Migration d'une application monolithique vers une architecture modulaire</title>
+      <abstract>Découpage d'un monolithe de gestion logistique en modules indépendants.</abstract>
+      <author>Youssef Amrani</author>
+      <supervisors><supervisor>Pr. Nadia Tazi</supervisor><supervisor>Pr. Karim Benali</supervisor></supervisors>
+      <program>Master Génie Logiciel</program>
+      <internship companyRef="cmp_unknown">
+        <city>Tanger</city>
+        <startDate>2023-02-15</startDate><endDate>2023-08-15</endDate>
+        <role>Stagiaire développeur back-end</role>
+      </internship>
+      <keywords><keyword>architecture</keyword><keyword>migration</keyword></keywords>
+      <technologies><techRef ref="tech_nodejs"/><techRef ref="tech_mongodb"/><techRef ref="tech_docker"/></technologies>
+    </report>
+
+    <report id="rep_2024_022" year="2024" language="fr" visibility="public">
+      <title>Industrialisation du déploiement d'une plateforme de données</title>
+      <author>Imane Cherkaoui</author>
+      <supervisors><supervisor>Pr. Nadia Tazi</supervisor></supervisors>
+      <internship companyRef="cmp_atlas">
+        <startDate>2024-03-01</startDate><endDate>2024-08-31</endDate>
+      </internship>
+      <technologies><techRef ref="tech_docker"/><techRef ref="tech_python"/></technologies>
+    </report>
+  </reports>
+</library>

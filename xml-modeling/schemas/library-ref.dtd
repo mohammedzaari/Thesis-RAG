@@ -1,0 +1,52 @@
+<!--
+  library-ref.dtd — DTD equivalent of library-ref.xsd.
+
+  Referential integrity in a DTD uses ID / IDREF:
+    * an ID value must be unique in the WHOLE document (hence the cmp_, tech_, rep_ prefixes);
+    * an IDREF must match some ID — but it can point to ANY element carrying an ID.
+      The DTD therefore cannot forbid a companyRef that targets a technology,
+      whereas xs:keyref in the XSD can. This is a key argument for XSD over DTD.
+-->
+<!ELEMENT library (companyCatalog, technologyCatalog, reports)>
+
+<!ELEMENT companyCatalog (company+)>
+<!ELEMENT company (name, alias*, sector?, city?)>
+<!ATTLIST company id ID #REQUIRED>
+
+<!ELEMENT technologyCatalog (technology+)>
+<!ELEMENT technology (name, alias*)>
+<!ATTLIST technology
+  id        ID #REQUIRED
+  category  (Back-end | Front-end | Data | DevOps | AI | Other) "Other">
+
+<!ELEMENT reports (report*)>
+<!ELEMENT report (title, abstract?, author, supervisors, program?, internship,
+                  keywords?, technologies?)>
+<!ATTLIST report
+  id          ID                    #REQUIRED
+  year        CDATA                 #REQUIRED
+  language    CDATA                 "fr"
+  visibility  (public | restricted) "public">
+
+<!ELEMENT supervisors (supervisor+)>
+<!ELEMENT internship (city?, startDate, endDate, role?)>
+<!ATTLIST internship companyRef IDREF #REQUIRED>
+
+<!ELEMENT keywords (keyword*)>
+<!ELEMENT technologies (techRef*)>
+<!ELEMENT techRef EMPTY>
+<!ATTLIST techRef ref IDREF #REQUIRED>
+
+<!ELEMENT name       (#PCDATA)>
+<!ELEMENT alias      (#PCDATA)>
+<!ELEMENT sector     (#PCDATA)>
+<!ELEMENT city       (#PCDATA)>
+<!ELEMENT title      (#PCDATA)>
+<!ELEMENT abstract   (#PCDATA)>
+<!ELEMENT author     (#PCDATA)>
+<!ELEMENT supervisor (#PCDATA)>
+<!ELEMENT program    (#PCDATA)>
+<!ELEMENT startDate  (#PCDATA)>
+<!ELEMENT endDate    (#PCDATA)>
+<!ELEMENT role       (#PCDATA)>
+<!ELEMENT keyword    (#PCDATA)>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <document id="rep-2024-001" kind="report" year="2024" language="fr" visibility="public">
+    <title>Mise en place d'une plateforme de détection de fraude en temps réel</title>
+    <abstract>Conception d'un pipeline de streaming pour détecter les transactions suspectes.</abstract>
+    <author>Salma El Idrissi</author>
+    <supervisor>Pr. Karim Benali</supervisor>
+    <program>Master Data Science</program>
+    <company>Atlas Data Solutions</company>
+    <city>Casablanca</city>
+    <keywords>
+      <keyword>fraude</keyword>
+      <keyword>streaming</keyword>
+    </keywords>
+    <technologies>
+      <technology>Kafka</technology>
+      <technology>Spark</technology>
+      <technology>Python</technology>
+    </technologies>
+  </document>
+  <document id="rep-2023-014" kind="report" year="2023" language="fr" visibility="restricted">
+    <title>Migration d'une application monolithique vers une architecture modulaire</title>
+    <abstract>Découpage d'un monolithe de gestion logistique en modules indépendants.</abstract>
+    <author>Youssef Amrani</author>
+    <supervisor>Pr. Nadia Tazi, Pr. Karim Benali</supervisor>
+    <program>Master Génie Logiciel</program>
+    <company>Maghreb Logistics SA</company>
+    <city>Tanger</city>
+    <keywords>
+      <keyword>architecture</keyword>
+      <keyword>migration</keyword>
+    </keywords>
+    <technologies>
+      <technology>Node.js</technology>
+      <technology>MongoDB</technology>
+      <technology>Docker</technology>
+    </technologies>
+  </document>
+  <document id="rep-2024-022" kind="report" year="2024" language="fr" visibility="public">
+    <title>Industrialisation du déploiement d'une plateforme de données</title>
+    <author>Imane Cherkaoui</author>
+    <supervisor>Pr. Nadia Tazi</supervisor>
+    <company>Atlas Data Solutions</company>
+    <city>Casablanca</city>
+    <technologies>
+      <technology>Docker</technology>
+      <technology>Python</technology>
+    </technologies>
+  </document>
+</library>

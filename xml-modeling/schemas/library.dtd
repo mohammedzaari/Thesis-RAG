@@ -1,0 +1,34 @@
+<!--
+  library.dtd — DTD equivalent of library.xsd (flat exchange model used by the API).
+
+  Limits compared with the XSD:
+    * no data types: year is plain text (the XSD enforces an integer 1990..2100)
+    * no uniqueness rule other than ID (id values must be valid XML names)
+    * no namespaces support
+  The API itself REJECTS any <!DOCTYPE>, for security (XXE): the DTD is meant for
+  modelling and offline validation, see validate.sh (xmllint with the dtdvalid option)
+-->
+<!ELEMENT library (document+)>
+
+<!ELEMENT document (title, abstract?, author?, supervisor?, program?, company?,
+                    city?, keywords?, technologies?, content?)>
+<!ATTLIST document
+  id          ID                        #REQUIRED
+  kind        (report | guide)          #REQUIRED
+  year        CDATA                     #REQUIRED
+  language    CDATA                     "fr"
+  visibility  (public | restricted)     "public">
+
+<!ELEMENT title        (#PCDATA)>
+<!ELEMENT abstract     (#PCDATA)>
+<!ELEMENT author       (#PCDATA)>
+<!ELEMENT supervisor   (#PCDATA)>
+<!ELEMENT program      (#PCDATA)>
+<!ELEMENT company      (#PCDATA)>
+<!ELEMENT city         (#PCDATA)>
+<!ELEMENT content      (#PCDATA)>
+
+<!ELEMENT keywords     (keyword*)>
+<!ELEMENT keyword      (#PCDATA)>
+<!ELEMENT technologies (technology*)>
+<!ELEMENT technology   (#PCDATA)>
