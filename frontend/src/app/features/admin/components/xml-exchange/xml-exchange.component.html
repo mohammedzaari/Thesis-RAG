@@ -1,0 +1,12 @@
+<section class="panel">
+  <h2>Échanges XML</h2>
+  <p class="muted">Le fichier est validé par le schéma <code>library.xsd</code> avant toute écriture.</p>
+  <div class="row">
+    <label>Importer un fichier XML
+      <input type="file" accept=".xml,application/xml" (change)="onFileSelected($event)">
+    </label>
+    <button type="button" class="secondary" (click)="exportCatalogue()">Exporter le catalogue (XML)</button>
+  </div>
+  @if (message()) { <p role="status">{{ message() }}</p> }
+  @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+</section>

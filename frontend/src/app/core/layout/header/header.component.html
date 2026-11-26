@@ -1,0 +1,16 @@
+<header class="bar">
+  <a routerLink="/library" class="brand">Bibliothèque des mémoires</a>
+  @if (auth.isAuthenticated()) {
+    <nav aria-label="Navigation principale">
+      <a routerLink="/library" routerLinkActive="active">Catalogue</a>
+      <a routerLink="/assistant" routerLinkActive="active">Assistant</a>
+      @if (auth.isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active">Administration</a>
+      }
+    </nav>
+    <span class="user">
+      {{ auth.user()?.fullName }}
+      <button class="secondary" type="button" (click)="logout()">Se déconnecter</button>
+    </span>
+  }
+</header>

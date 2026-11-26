@@ -1,0 +1,22 @@
+<article class="panel card" [class.guide]="document().kind === 'guide'">
+  <h2>{{ document().title }}</h2>
+  <p class="meta muted">
+    {{ document().kind === 'guide' ? 'Guide' : 'Rapport' }} de {{ document().year }}
+    @if (document().companyName) { – {{ document().companyName }} }
+    @if (document().authorName) { – {{ document().authorName }} }
+    @if (document().visibility === 'restricted') { – accès restreint }
+  </p>
+  @if (document().abstract) { <p>{{ document().abstract }}</p> }
+
+  <p class="tags">
+    @for (tech of document().technologies; track tech) { <span class="tag">{{ tech }}</span> }
+    @for (keyword of document().keywords; track keyword) { <span class="tag keyword">{{ keyword }}</span> }
+  </p>
+
+  <div class="row">
+    @if (canOpenPdf()) {
+      <button type="button" class="secondary" (click)="pdfRequested.emit(document()._id)">Ouvrir le PDF</button>
+    }
+    <button type="button" class="secondary" (click)="exportRequested.emit(document()._id)">Exporter la fiche (XML)</button>
+  </div>
+</article>

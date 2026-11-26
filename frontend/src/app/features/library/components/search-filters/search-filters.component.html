@@ -1,0 +1,31 @@
+<form class="panel row" [formGroup]="form" (ngSubmit)="submit()">
+  <label class="grow">Recherche
+    <input type="search" formControlName="q" placeholder="ex. microservices, Kafka, Attijariwafa">
+  </label>
+  <label>Type
+    <select formControlName="kind">
+      <option value="">Tous</option>
+      <option value="report">Rapports</option>
+      <option value="guide">Guides</option>
+    </select>
+  </label>
+  <label>Année
+    <select formControlName="year">
+      <option value="">Toutes</option>
+      @for (year of facets().years; track year) { <option [value]="year">{{ year }}</option> }
+    </select>
+  </label>
+  <label>Entreprise
+    <select formControlName="company">
+      <option value="">Toutes</option>
+      @for (company of facets().companies; track company) { <option [value]="company">{{ company }}</option> }
+    </select>
+  </label>
+  <label>Technologie
+    <select formControlName="technology">
+      <option value="">Toutes</option>
+      @for (tech of facets().technologies; track tech) { <option [value]="tech">{{ tech }}</option> }
+    </select>
+  </label>
+  <button type="submit">Rechercher</button>
+</form>

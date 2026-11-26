@@ -1,0 +1,20 @@
+<h1>Catalogue</h1>
+<p class="muted">Retrouvez un concept, une technologie ou une entreprise dans les rapports et les guides.</p>
+
+<app-search-filters [facets]="facets()" (searchRequested)="onSearch($event)" />
+
+<p class="muted" aria-live="polite">{{ total() }} résultat(s)</p>
+
+@for (doc of items(); track doc._id) {
+  <app-document-card [document]="doc" (pdfRequested)="openPdf($event)" (exportRequested)="exportRecord($event)" />
+} @empty {
+  <p class="panel">Aucun résultat. Essayez un autre mot-clé ou retirez un filtre.</p>
+}
+
+@if (total() > pageSize) {
+  <div class="row pager">
+    <button type="button" class="secondary" [disabled]="page() <= 1" (click)="load(page() - 1)">Précédent</button>
+    <span>Page {{ page() }}</span>
+    <button type="button" class="secondary" [disabled]="page() * pageSize >= total()" (click)="load(page() + 1)">Suivant</button>
+  </div>
+}

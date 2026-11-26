@@ -1,0 +1,13 @@
+<div class="turn" [class.user]="turn().role === 'user'">
+  <p class="content">{{ turn().content }}</p>
+  @if (turn().sources?.length) {
+    <ol class="sources" aria-label="Sources utilisées">
+      @for (source of turn().sources; track $index) {
+        <li>
+          <strong>{{ source.title }}</strong> ({{ source.year }}, passage {{ source.position }})<br>
+          <span class="muted">{{ source.excerpt }}</span>
+        </li>
+      }
+    </ol>
+  }
+</div>

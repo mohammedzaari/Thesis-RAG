@@ -1,0 +1,8 @@
+.bar { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; padding: .75rem 1.5rem;
+       background: var(--sheet); border-bottom: 1px solid var(--line); }
+.brand { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.2rem; font-weight: 600;
+         color: var(--ink); text-decoration: none; }
+nav { display: flex; gap: 1rem; flex: 1; }
+nav a { color: var(--ink-soft); text-decoration: none; padding: .25rem 0; border-bottom: 2px solid transparent; }
+nav a.active { color: var(--ink); border-bottom-color: var(--action); }
+.user { display: flex; gap: .75rem; align-items: center; font-size: .9rem; }

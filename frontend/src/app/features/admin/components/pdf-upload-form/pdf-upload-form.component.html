@@ -1,0 +1,27 @@
+<section class="panel">
+  <h2>Ajouter un rapport (PDF)</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="grid">
+    <label>Fichier PDF (20 Mo max)
+      <input type="file" accept="application/pdf" (change)="onFileSelected($event)">
+    </label>
+    <label>Titre <input formControlName="title"></label>
+    <label>Année <input type="number" formControlName="year"></label>
+    <label>Auteur <input formControlName="authorName"></label>
+    <label>Encadrant <input formControlName="supervisorName"></label>
+    <label>Entreprise <input formControlName="companyName"></label>
+    <label>Technologies (séparées par des virgules) <input formControlName="technologies"></label>
+    <label>Mots-clés (séparés par des virgules) <input formControlName="keywords"></label>
+    <label>Accès
+      <select formControlName="visibility">
+        <option value="public">Public (texte et assistant)</option>
+        <option value="restricted">Restreint (fiche seulement)</option>
+      </select>
+    </label>
+    <label class="wide">Résumé <textarea rows="3" formControlName="abstract"></textarea></label>
+    <div class="wide">
+      <button type="submit" [disabled]="form.invalid || !file() || busy()">Importer le rapport</button>
+    </div>
+  </form>
+  @if (message()) { <p role="status">{{ message() }}</p> }
+  @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+</section>

@@ -1,0 +1,22 @@
+<h1>Assistant de rédaction</h1>
+<p class="muted">
+  Posez une question sur l'organisation d'un rapport ou le choix d'une architecture.
+  Les réponses s'appuient sur la bibliothèque et citent leurs sources.
+</p>
+
+<section class="thread" aria-live="polite">
+  @for (turn of turns(); track $index) {
+    <app-chat-turn [turn]="turn" />
+  } @empty {
+    <p class="panel">Exemple : « Comment justifier le choix d'une architecture en couches dans mon rapport ? »</p>
+  }
+  @if (loading()) { <p class="muted">Recherche dans la bibliothèque…</p> }
+  @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+</section>
+
+<form class="row ask" [formGroup]="form" (ngSubmit)="send()">
+  <label class="grow">Votre question
+    <textarea rows="2" formControlName="question"></textarea>
+  </label>
+  <button type="submit" [disabled]="loading() || form.invalid">Envoyer</button>
+</form>
