@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <document id="guide-report-structure" kind="guide" year="2026" language="en">
+    <title>Organising an internship or thesis report</title>
+    <abstract>Recommended chapter structure and the role of each part of a master's report.</abstract>
+    <program>Master (all programs)</program>
+    <keywords><keyword>report structure</keyword><keyword>methodology</keyword><keyword>writing</keyword></keywords>
+    <content>A solid report follows a clear progression: introduction, context and organisation, state of the art, analysis and design, implementation, evaluation, conclusion.
+
+The introduction states the context, the problem, the objectives and the announced plan. It must let the reader understand in one page why the work exists and how the report is organised.
+
+The organisation chapter presents the host company: activity, structure, teams, tools and the project environment. It then situates the assignment: stakeholders, constraints, schedule and the working method used, for example Scrum or a V-cycle. Keep it factual and relevant to the project, not a promotional presentation of the company.
+
+The state of the art compares existing approaches and technologies against explicit criteria. Each choice made later in the report must be traceable to this comparison.
+
+The analysis chapter lists functional and non-functional requirements, actors and use cases. The design chapter then justifies the architecture with diagrams and explains how each requirement is satisfied.
+
+The evaluation chapter measures results against the initial objectives with concrete indicators: performance, quality, user feedback. The conclusion summarises contributions, acknowledges limitations and proposes perspectives.</content>
+  </document>
+
+  <document id="guide-architecture-choices" kind="guide" year="2026" language="en">
+    <title>Choosing and justifying a software architecture</title>
+    <abstract>Main architectural styles, their trade-offs, and how to defend a choice in a report.</abstract>
+    <program>Master (all programs)</program>
+    <keywords><keyword>architecture</keyword><keyword>layered</keyword><keyword>microservices</keyword><keyword>hexagonal</keyword></keywords>
+    <technologies><technology>Node.js</technology><technology>Docker</technology></technologies>
+    <content>A layered architecture separates presentation, business logic and data access. It is simple, well understood and suited to most applications. Its risk is that layers become too tightly coupled to the database if the business rules are not isolated.
+
+A modular monolith is a single deployable unit split into independent modules with explicit public interfaces. It is the recommended starting point for most projects: it keeps deployment simple while preparing a later extraction into services.
+
+Microservices split the system by business domain, each service owning its data. They allow independent deployment and scaling but add distributed complexity: network failures, eventual consistency, monitoring. They are justified by several teams or very different scaling needs, not by fashion.
+
+A hexagonal architecture, also called ports and adapters, places the domain at the centre and pushes frameworks, databases and user interfaces to the edges behind interfaces. It improves testability and makes technology choices reversible.
+
+Event-driven architecture lets components react to facts published as events. It decouples producers and consumers and fits asynchronous workflows, at the price of harder debugging and the need for idempotent consumers.
+
+To justify a choice in a report, state the quality attributes that matter (maintainability, performance, security, cost), compare two or three alternatives against them in a table, and explain the trade-off you accepted. An architecture without stated criteria looks arbitrary to the jury.</content>
+  </document>
+
+  <document id="guide-documenting-architecture" kind="guide" year="2026" language="en">
+    <title>Documenting an architecture: C4 model, UML and decision records</title>
+    <abstract>How to present diagrams and architectural decisions clearly in a report.</abstract>
+    <program>Master (all programs)</program>
+    <keywords><keyword>C4 model</keyword><keyword>UML</keyword><keyword>ADR</keyword><keyword>diagrams</keyword></keywords>
+    <content>The C4 model describes a system at four zoom levels: context, containers, components and code. Start with the context diagram showing users and external systems, then the container diagram showing applications, databases and their communication. Most reports only need the first three levels.
+
+UML remains useful for precise views: use case diagrams for requirements, class diagrams for the domain model, sequence diagrams for critical interactions such as authentication, and deployment diagrams for the infrastructure.
+
+Every diagram needs a title, a legend and a short paragraph that explains what the reader should notice. A diagram dropped without commentary adds little value.
+
+Architecture Decision Records capture one decision each: the context, the options considered, the decision and its consequences. Writing a short record for each major choice, such as the database, the authentication method or the deployment strategy, gives the report a traceable justification and shows professional practice.
+
+Keep vocabulary consistent between text and diagrams: a component must keep the same name everywhere.</content>
+  </document>
+
+  <document id="guide-internship-organisation" kind="guide" year="2026" language="en">
+    <title>Describing the host organisation and the project method</title>
+    <abstract>What to include when presenting the company, the team and the project management approach.</abstract>
+    <program>Master (all programs)</program>
+    <keywords><keyword>company presentation</keyword><keyword>Scrum</keyword><keyword>project management</keyword></keywords>
+    <content>Present the host organisation in a short, useful way: sector, size, main services, organisation chart of the relevant department and your position in it. Obtain the company's agreement before publishing internal figures or diagrams, and anonymise anything confidential.
+
+Describe the project context: who requested the work, the business need, the existing system and its limitations. State the constraints you had to respect, such as imposed technologies, deadlines or security rules.
+
+Explain the working method. If the team applied Scrum, indicate the sprint length, the ceremonies, the backlog tool and your role. If a predictive approach was used, present the phases and milestones. Include a Gantt chart or a sprint timeline to show the real schedule and justify deviations.
+
+List the tools used for versioning, continuous integration, communication and documentation. A short table of tools with their purpose is clearer than a paragraph.
+
+Close the chapter by restating the objectives in measurable terms so that the evaluation chapter can come back to them.</content>
+  </document>
+</library>
